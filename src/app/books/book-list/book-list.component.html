@@ -1,0 +1,20 @@
+<h5>Book List</h5>
+<a [routerLink]="['new']" class="btn btn-default btn-sm">
+  NEW
+</a>
+<app-book-preview
+  *ngFor="let book of books | filter: 50; let e = even"
+  [even]="e"
+  [book]="book"
+  (bookSelected)="selectBook($event)"
+></app-book-preview>
+
+<!-- <ul *ngIf="books">
+  <li
+    *ngFor="let book of books; let i = index; let e = even"
+    [ngClass]="{ odd: e }"
+  >
+    {{ i }}
+    {{ book.title }}
+  </li>
+</ul> -->

@@ -1,0 +1,27 @@
+<h5>Book New!</h5>
+<form [formGroup]="form" (ngSubmit)="saveBook()">
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" id="title" formControlName="title" />
+    <div [hidden]="!form.get('title').hasError('required')">
+      Enter a title
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="isbn">ISBN</label>
+    <input type="text" id="isbn" formControlName="isbn" />
+    <div [hidden]="!form.get('isbn').hasError('isbn')">
+      ISBN is not VALID<br />
+    </div>
+  </div>
+
+  <div [hidden]="!form.get('isbn').hasError('minlength')">
+    Not a valid ISBN
+  </div>
+
+  <button type="submit" [disabled]="!form.valid">Save</button>
+</form>
+
+<a [routerLink]="['..']">Back</a>
+
+<!-- <pre>{{ form.value | json }}</pre> -->

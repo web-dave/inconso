@@ -1,0 +1,18 @@
+<h5>Book Details</h5>
+<div class="panel panel-default" *ngIf="book$ | async as book">
+  <div class="panel-heading">{{ book.title }} ({{ book.isbn }})</div>
+  <div class="panel-body" [appOrderBtn]="book">
+    <p>
+      {{ book.abstract }}
+      <span class="badge">{{ foo | pages }}</span>
+      <span class="badge">{{ transform(foo) }}</span>
+    </p>
+    <p>{{ book.publisher.name }} ({{ book.publisher.url }})</p>
+  </div>
+  <div class="panel-footer">{{ book.author }}</div>
+  <a [routerLink]="['edit']" class="btn btn-default btn-sm">
+    edit
+  </a>
+</div>
+<hr />
+<a [routerLink]="['..']">Back</a>

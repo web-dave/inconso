@@ -1,3 +1,3 @@
 # Inconso
 
-## https://github.com/web-dave/inconso
+## https://github.com/web-dave/inconso.git

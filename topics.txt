@@ -1,0 +1,17 @@
+ngx translate
+elements
+cd
+ngrx
+pwa
+
+links
+dynamic Forms
+https://stackblitz.com/edit/angular-f3bsxa
+Blog
+https://www.webdave.de/blog
+Update
+https://update.angular.io/
+Docs
+https://angular.io/
+Community
+https://angular.de/slack

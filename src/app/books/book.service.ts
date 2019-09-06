@@ -26,3 +26,9 @@ export class BookService {
     return this.http.post<IBook>(this.root, book);
   }
 }
+
+class BikeService extends BookService {
+  constructor(private service: HttpClient) {
+    super(service);
+  }
+}

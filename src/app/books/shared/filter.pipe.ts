@@ -7,5 +7,6 @@ import { IBook } from './custom-types';
 export class FilterPipe implements PipeTransform {
   transform(books: IBook[] = [], args: number = 1): IBook[] {
     return books.splice(0, args);
+    // return books.slice(0, args);
   }
 }

@@ -3,7 +3,7 @@
   NEW
 </a>
 <app-book-preview
-  *ngFor="let book of books | filter: 50; let e = even"
+  *ngFor="let book of books$ | async | filter: 50; let e = even"
   [even]="e"
   [book]="book"
   (bookSelected)="selectBook($event)"

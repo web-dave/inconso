@@ -1,12 +1,21 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy,
+  AfterContentChecked
+} from '@angular/core';
 import { IBook } from '../shared/custom-types';
 
 @Component({
   selector: 'app-book-preview',
   templateUrl: './book-preview.component.html',
-  styleUrls: ['./book-preview.component.scss']
+  styleUrls: ['./book-preview.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BookPreviewComponent implements OnInit {
+export class BookPreviewComponent implements OnInit, AfterContentChecked {
   @Input() book: IBook;
   @Input() even: boolean;
   @Output() bookSelected = new EventEmitter<IBook>();
@@ -17,5 +26,12 @@ export class BookPreviewComponent implements OnInit {
   selectThisBook() {
     console.log('BookPreviewComponent', this.book.title);
     this.bookSelected.emit(this.book);
+  }
+  change() {
+    this.book.title = new Date().toISOString();
+  }
+
+  ngAfterContentChecked(): void {
+    console.log('--> Check');
   }
 }

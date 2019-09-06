@@ -1,29 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  AfterContentChecked,
+  OnInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef
+} from '@angular/core';
 import { BookService } from '../book.service';
 import { IBook } from '../shared/custom-types';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
-  styleUrls: ['./book-list.component.scss']
+  styleUrls: ['./book-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class BookListComponent implements OnInit {
   books: IBook[];
+  books$: Observable<IBook[]>;
+
+  i = 0;
   constructor(
     private service: BookService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
-    this.service
-      .getBooks()
-      .subscribe(
-        b => (this.books = b),
-        err => console.error(err),
-        () => console.warn('Fertisch!')
-      );
+    this.books$ = this.service.getBooks();
   }
   selectBook(e: IBook) {
     console.table('BookListComponent', e);
